@@ -16,7 +16,6 @@
 {{- template "_internal/schema.html" . -}}
 {{- template "_internal/twitter_cards.html" . -}}
 {{ if eq (getenv "HUGO_ENV") "production" }}
-{{ template "_internal/google_analytics_async.html" . }}
 {{ if .Site.Params.enableSimpleAnalytics }}
 <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt=""/></noscript>
