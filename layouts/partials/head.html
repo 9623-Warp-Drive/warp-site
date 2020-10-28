@@ -17,8 +17,8 @@
 {{- template "_internal/twitter_cards.html" . -}}
 {{ if eq (getenv "HUGO_ENV") "production" }}
 {{ if .Site.Params.enableSimpleAnalytics }}
-<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
-<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt=""/></noscript>
+<script async defer src="https://simple.westashleyrobotics.com/latest.js"></script>
+<noscript><img src="https://simple.westashleyrobotics.com/noscript.gif" alt=""/></noscript>
 {{ end }}
 {{ end }}
 {{ partialCached "head-css.html" . "asdf" }}
