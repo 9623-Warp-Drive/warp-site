@@ -1,0 +1,16 @@
+<table>
+    <thead>
+        <tr>
+            <th>Preview</th>
+            <th>File</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ range resources.Match ( .Get 0 )}}
+        <tr>
+            <td><image src={{ .Permalink }} width=100></image></td>
+            <td><a href={{ .Permalink }}>{{ .Title }}</a></td>
+        </tr>
+        {{ end }}
+    </tbody>
+</table>
