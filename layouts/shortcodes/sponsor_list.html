@@ -10,7 +10,7 @@
 					<div class="card-columns" style="column-count: {{ (math.Ceil (div (len (where ( .Page.Resources.ByType "image" ) "Params.category" (.Get "category"))) 2.0))}} ">
 					{{ range (where ( .Page.Resources.ByType "image" ) "Params.category" (.Get "category")) }}
 										
-					<div class="card align-items-center bg-transparent h-100 border-muted">
+					<div class="card align-items-center bg-transparent h-100 border-white">
 						<!-- {{ if .Name }}
 						<div class="card-header">
 							<a href="{{ .Params.link }}">{{ .Name }}</a>
