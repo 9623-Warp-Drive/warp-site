@@ -27,7 +27,7 @@
                         {{ end}}
                     {{ end }}
                     <div class="card-body">
-                        <h5 class="card-title"><a href="{{ "/members/" | relLangURL }}{{ . | urlize }}">{{ (index (split . " ") 0) }}</a></h5>
+                        <h5 class="card-title"><a class="stretched-link" href="{{ "/members/" | relLangURL }}{{ . | urlize }}">{{ (index (split . " ") 0) }}</a></h5>
 					</div>
 				</div>
 		{{ end }}

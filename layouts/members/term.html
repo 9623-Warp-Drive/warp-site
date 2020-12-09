@@ -13,14 +13,16 @@
             <div class="card shadow">
                 <div class="card-header">Previous Teams</div>
                 <div class="card-body">
-                    <p class="card-text">
-                        <ul>
-                            {{ range .Pages }}
-                            <li><a href="{{ .RelPermalink }}">{{- .Title -}}</a></li>
-                            {{ with .Description}} <p>{{ . | markdownify }}</p> {{ end}}
-                            {{ end }}
-                        </ul>
-                    </p>
+            {{ range .Pages }}
+            <div class="col-12">
+                <div class="card shadow h-100">
+                    <div class="card-body">
+                        <h5 class="card-title"><a class="stretched-link" href="{{.Permalink}}">{{.Title}}</a></h5>
+                        <p class="card-text"><small class="text-muted">{{ len .Params.members }} members</small></p>
+                    </div>
+                </div>
+            </div>
+			{{ end }}
                 </div>
             </div>
             {{ with .Params.links }}
@@ -28,13 +30,15 @@
                 <div class="card-header">Links</div>
                 <div class="card-body">
                     
-                    <p class="card-text">
-                        <ul>
                     {{ range . }}
-                        <li><a href="{{ .url }}">{{- .display_title -}}</a></li>
+                    <div class="col-12">
+                        <div class="card shadow h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><a class="stretched-link" href="{{.url}}">{{- .display_title -}}</a></h5>
+                            </div>
+                        </div>
+                    </div>
                 {{ end }}
-                </ul>
-                </p>
             </div>
             </div>
         </div>
