@@ -18,5 +18,7 @@
 		{{ partial "disqus-comment.html" . }}
 	{{ end }}
 	{{ if not .Params.hide_lastmod }} <div class="text-muted mt-5 pt-3 border-top">{{ partial "page-meta-lastmod.html" . }}</div> {{ end }}
+	{{ with .Params.attribution_author }} <div class="text-muted mt-1">This page contains content by <a href="{{$.Params.author_link}}">{{ . }}</a> that is licensed under the <a href="{{ $.Params.license_link }}">{{ $.Params.license_name }}</a> license.</div>{{ end }}
+
 </div>
 {{ end }}
