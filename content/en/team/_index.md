@@ -1,8 +1,9 @@
 ---
 title: "Teams"
 linkTitle: "Teams"
-weight: 15
+weight: 16
 menu:
   main:
-    weight: 15
+    weight: 16
+hide_breadcrumb: true
 ---

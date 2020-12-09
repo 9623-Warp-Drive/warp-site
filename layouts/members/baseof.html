@@ -21,7 +21,7 @@
           <main class="col-12 col-md-9 col-xl-4 pl-md-5" role="main">
             {{ end }}
  
-            {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
+            {{ if not .Params.hide_breadcrumb}}  {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }} {{ end }}
             {{ block "main" . }}{{ end }}
           </main>
         </div>

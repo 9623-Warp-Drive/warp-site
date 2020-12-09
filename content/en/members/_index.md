@@ -6,4 +6,5 @@ toc_root: true
 menu:
   main:
     weight: 15
+hide_breadcrumb: true
 ---
