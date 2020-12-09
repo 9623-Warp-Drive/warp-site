@@ -1,0 +1,28 @@
+{{ $col_id := .Get "color" | default .Ordinal }}	
+	<section class="row td-box td-box--{{ $col_id }} td-box--gradient td-box--height-auto">
+		<div class="col">
+			<div class="row">
+				<div class="col-12">
+					<div class="card shadow text-dark">
+			
+				<div class="card-header"><h1>{{ .Get 0 }}</h1></div>
+				<div class="card-body">
+					<div class="card-columns">
+					{{ range (where ( .Page.Resources.ByType "image" ) "Params.category" (.Get 0)) }}
+										
+					<div class="card align-items-center bg-transparent h-100 border-muted">
+						{{ if .Name }}
+						<div class="card-header">
+							<a href="{{ .Params.link }}">{{ .Name }}</a>
+						</div>
+						{{ end }}
+						
+						<a href="{{ .Params.link }}"><img src="{{ .Permalink }}" class="card-img-bot img-fluid"></a>
+						
+					</div>
+						
+						{{ end }}
+</div>				</div></div>
+			</div>
+		</div>
+	</section>

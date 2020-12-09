@@ -1,0 +1,96 @@
+{{ define "main" }}
+<div class="td-content">
+	<h1>{{ .Title }}</h1>
+	{{ with .Params.seasons }}
+	<div class="lead">
+		{{ range sort $.Params.seasons }}
+		<a href="{{ "/seasons/" | relLangURL }}{{ . | urlize }}">{{ . | markdownify }}</a>
+		{{ end }}
+	</div>
+	{{ end }}
+	{{ if (and (not .Params.hide_readingtime) (.Site.Params.ui.readingtime.enable)) }}
+	{{ partial "reading-time.html" . }}
+	{{ end }}
+	{{ with .Params.members }}
+	<h2>Members</h2>
+		<div class="card-group">
+		{{ range sort $.Params.members }}
+
+		<div class="card h-100">
+			{{ with (resources.GetMatch (printf "images/profile/%s.*" (urlize .))) }}
+			{{ $image := .Resize "500x jpg" }}
+                        <img src="{{ $image.Permalink }}" class="card-img-top">
+                    {{ else }}
+						{{ with (resources.GetMatch "images/profile/missing.*") }}
+						{{ $image := .Resize "500x jpg" }}
+                            <img src="{{ $image.Permalink }}" class="card-img-top">
+                        {{ end}}
+                    {{ end }}
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{{ "/members/" | relLangURL }}{{ . | urlize }}">{{ (index (split . " ") 0) }}</a></h5>
+					</div>
+				</div>
+		{{ end }}
+	</div>
+	{{ end }}
+
+
+	{{ $awards := getJSON "https://api.vexdb.io/v1/get_awards?team=" $.Params.Title }}
+	<h2>Awards</h2>
+	{{ if gt (len $awards.result) 0 }}
+	<table id="awards">
+		<thead>
+			<tr>
+				<th>Award</th>
+				<th>Event</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{ range $awards.result }}
+			{{ $award_sku_resolver := getJSON "https://api.vexdb.io/v1/get_events?sku=" .sku }}
+			{{ $.Scratch.Set "award_name" .name }}
+			{{ ($.Scratch.Set "event_sku" .sku) }}
+			{{ range $award_sku_resolver.result }}{{ ($.Scratch.Set "resolved_event_name" .name) }}{{ end }}
+			{{ with ($.Scratch.Get "resolved_event_name") }}
+			<tr>
+				<td>{{ $.Scratch.Get "award_name" }}</td>
+				<td><a
+						href="https://vexdb.io/events/view/{{ $.Scratch.Get "event_sku" }}?t=awards">{{ $.Scratch.Get "resolved_event_name" }}</a>
+				</td>
+				</li>
+				{{ end }}
+				{{ end }}
+		</tbody>
+	</table>
+	{{ else }}
+	This team has not received any awards.
+	{{ end }}
+
+	{{ $events := getJSON "https://api.vexdb.io/v1/get_events?team=" $.Params.Title }}
+	<h2>Events</h2>
+	{{ if gt (len $events.result) 0 }}
+	<table id="events" class=".table">
+		<thead>
+			<tr>
+				<th>Event</th>
+				<th>Location</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{ range $events.result }}
+			<tr>
+				<td><a href="https://vexdb.io/events/view/{{ .sku }}">{{ .name }}</a></td>
+				<td>{{ .loc_venue }}</td>
+				</li>
+				{{ end }}
+	</table>
+	{{ else }}
+	This team has not attended any events.
+	{{ end }}
+	{{ .Content }}
+	{{ if (.Site.Params.DisqusShortname) }}
+	<br />
+	{{ partial "disqus-comment.html" . }}
+	{{ end }}
+</div>
+{{ end }}

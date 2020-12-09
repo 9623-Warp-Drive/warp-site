@@ -1,0 +1,16 @@
+{{ define "main" }}
+<div class="td-content">
+	<h1>{{ .Title }}</h1>
+        {{ with .Params.description }}<div class="lead">{{ . | markdownify }}</div>{{ end }}
+
+        <hr class="panel-line">
+        {{ range .Pages }}
+                <div class="entry">
+                    <h5>
+                        <a href="{{ .RelPermalink }}">{{- .Title -}}</a>
+                    </h5>
+                    <p>{{ .Description | markdownify }}</p>
+                </div>
+    {{ end }}
+</div>
+{{ end }}

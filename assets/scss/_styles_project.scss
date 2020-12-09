@@ -1,0 +1,10 @@
+@media (min-width: 34em) {
+    .card-columns {
+        -webkit-column-count:2;
+        -moz-column-count:2;
+        column-count:2;
+    }
+}
+.td-sidebar-nav {
+	max-height: calc(100vh - 6rem);
+}

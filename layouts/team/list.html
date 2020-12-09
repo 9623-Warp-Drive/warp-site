@@ -1,0 +1,19 @@
+{{ define "main" }}
+<div class="td-content">
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.description }}<div class="lead">{{ . | markdownify }}</div>{{ end }}
+    {{ .Content }}
+        <div class="row mr-0">
+            {{ range .Pages }}
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2 my-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{{.Permalink}}">{{.Title}}</a></h5>
+                        <p class="card-text"><small class="text-muted">{{ len .Params.members }} members</small></p>
+                    </div>
+                </div>
+            </div>
+			{{ end }}
+    	</div>
+</div>
+{{ end }}

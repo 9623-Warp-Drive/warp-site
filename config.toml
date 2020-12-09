@@ -16,7 +16,10 @@ defaultContentLanguageInSubdir = false
 # Useful when translating.
 enableMissingTranslationPlaceholders = true
 
-disableKinds = ["taxonomy", "taxonomyTerm"]
+[taxonomies]
+  member = "members"
+  team = "teams"
+  season = "seasons"
 
 # Highlighting config
 pygmentsCodeFences = true
@@ -41,7 +44,7 @@ latexDashes = true
 # Image processing configuration.
 [imaging]
 resampleFilter = "CatmullRom"
-quality = 75
+quality = 80
 anchor = "smart"
 
 [services]
