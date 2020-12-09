@@ -10,6 +10,8 @@
         {{ end }}
       </div>
       <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+
+        {{ with resources.Get "icons/ccsd_logo.gif" }}<a href="https://www.ccsdschools.com"><img class="pt-1" height="40px" src="{{ .Permalink}}"></img></a>{{ end }}
         {{ with $links }}
         {{ with index . "developer"}}
         {{ template "footer-links-block"  . }}
