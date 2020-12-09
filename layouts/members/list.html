@@ -6,7 +6,7 @@
         <div class="row mr-0">
             {{ range .Pages }}
             <div class="col-6 col-md-4 col-lg-3 col-xl-2 my-3">
-                <div class="card h-100">
+                <div class="card shadow h-100">
 
                     {{ with (resources.GetMatch (printf "images/profile/%s.*" (urlize .LinkTitle))) }}
                     {{ $image := .Resize "500x jpg" }}

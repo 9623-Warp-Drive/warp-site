@@ -6,11 +6,11 @@
         <div class="card-columns">
             {{ with (resources.GetMatch (printf "images/profile/%s.*" (urlize .LinkTitle))) }}
             {{ $image := .Resize "500x jpg" }}
-            <div class="card">
+            <div class="card shadow">
                 <div class="card-header">Image</div><img class="card-img-top" src="{{ $image.Permalink }}">
             </div>
             {{ end }}
-            <div class="card">
+            <div class="card shadow">
                 <div class="card-header">Previous Teams</div>
                 <div class="card-body">
                     <p class="card-text">
@@ -24,7 +24,7 @@
                 </div>
             </div>
             {{ with .Params.links }}
-            <div class="card">
+            <div class="card shadow">
                 <div class="card-header">Links</div>
                 <div class="card-body">
                     
